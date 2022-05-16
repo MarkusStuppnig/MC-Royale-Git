@@ -1,0 +1,12 @@
+#Binaries
+/bin/
+
+#System specific Files
+/.metadata/
+/.settings/
+
+#Class Files
+*.class
+
+#Libraries
+/libs/
