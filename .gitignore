@@ -9,4 +9,6 @@
 *.class
 
 #Libraries
+libs/
 /libs/
+./libs/
