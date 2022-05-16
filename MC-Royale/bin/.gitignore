@@ -2,18 +2,3 @@
 /quest/
 /shop/
 /weapon/
-
-#Binaries
-/bin/
-
-#System specific Files
-/.metadata/
-/.settings/
-
-#Class Files
-*.class
-
-#Libraries
-libs/
-/libs/
-./libs/
