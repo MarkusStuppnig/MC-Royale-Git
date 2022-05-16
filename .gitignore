@@ -1,13 +1,12 @@
 #Binaries
 /bin/
-/libs/
 
 #System specific Files
-#/.metadata/
-#/.settings/
+/.metadata/
+/.settings/
 
 #Class Files
 *.class
 
 #Libraries
-#/libs/
+/libs/
