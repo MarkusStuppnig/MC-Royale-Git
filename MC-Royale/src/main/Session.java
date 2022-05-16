@@ -12,6 +12,7 @@ import org.bukkit.potion.PotionEffectType;
 import commands.HealCommand;
 import commands.MoneyCommand;
 import commands.ShopCommand;
+import config.Config;
 import item.Colors;
 import listeners.ArrowListener;
 import listeners.EntityDamageByEntityListener;
@@ -44,6 +45,9 @@ public class Session extends JavaPlugin {
 	public static HashMap<String, String> reload_players;
 	public static ArrayList<String> firerate_players;
 	
+	
+	public Config quests;
+	
 	public Session() {
 		this.name = "Plugin";
 		this.version = 0.1;
@@ -53,6 +57,9 @@ public class Session extends JavaPlugin {
 		weapons = new ArrayList<Weapon>();
 		reload_players = new HashMap<String, String>();
 		firerate_players = new ArrayList<String>();
+		
+		
+		this.quests = new Config("config/quests.yaml");
 	}
 	
 	public static Session getSession() {
