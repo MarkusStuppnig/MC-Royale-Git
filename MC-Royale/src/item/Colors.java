@@ -2,7 +2,7 @@ package item;
 
 public class Colors {
 
-	public static final String dark_red = "§4";
+	public static final String dark_red = "§$";
 	public static final String red = "§c";
 	public static final String gold = "§6";
 	public static final String yellow = "§e";
