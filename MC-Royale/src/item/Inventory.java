@@ -8,7 +8,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class Inventory {
 
 	public static boolean remove(ItemStack item, Player p) {
-        
+        //test
         int count = item.getAmount();
         
         if(!p.getInventory().containsAtLeast(item, count)) return false;
