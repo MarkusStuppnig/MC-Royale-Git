@@ -1,0 +1,113 @@
+package main;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
+import commands.HealCommand;
+import commands.MoneyCommand;
+import commands.ShopCommand;
+import item.Colors;
+import listeners.ArrowListener;
+import listeners.EntityDamageByEntityListener;
+import listeners.HotbarSwitchListener;
+import listeners.ItemDropListener;
+import listeners.ItemPickupListener;
+import listeners.MouseClickListener;
+import listeners.PlayerJoinListener;
+import listeners.health.EntityDamageListener;
+import listeners.health.EntityRegainHealthListener;
+import listeners.health.FoodLevelChangeListener;
+import listeners.health.PlayerItemConsumeListener;
+import quest.QuestItemListener;
+import quest.command.QuestCommand;
+import shop.InventoryClickListener;
+import shop.PlayerInterectEntityListener;
+import weapon.Weapon;
+import weapon.command.WeaponCommand;
+
+public class Session extends JavaPlugin {
+
+	private static Session session;
+	
+	public final String name;
+	public final double version;
+	
+	public final String defaultWorld;
+	
+	public static ArrayList<Weapon> weapons;
+	public static HashMap<String, String> reload_players;
+	public static ArrayList<String> firerate_players;
+	
+	public Session() {
+		this.name = "Plugin";
+		this.version = 0.1;
+		
+		this.defaultWorld = "world";
+		
+		weapons = new ArrayList<Weapon>();
+		reload_players = new HashMap<String, String>();
+		firerate_players = new ArrayList<String>();
+	}
+	
+	public static Session getSession() {
+		return session;
+	}
+	
+	@Override
+	public void onEnable() {
+		super.onEnable();
+		
+		session = this;
+		session.print(Colors.green + "Enabled: " + session.name + " v" + session.version);
+		
+		this.getCommand("weapon").setExecutor(new WeaponCommand());
+		this.getCommand("shop").setExecutor(new ShopCommand());
+		this.getCommand("quests").setExecutor(new QuestCommand());
+		this.getCommand("heal").setExecutor(new HealCommand());
+		this.getCommand("money").setExecutor(new MoneyCommand());
+		
+		this.getServer().getPluginManager().registerEvents(new MouseClickListener(), this);
+		this.getServer().getPluginManager().registerEvents(new ArrowListener(), this);
+		this.getServer().getPluginManager().registerEvents(new HotbarSwitchListener(), this);
+		this.getServer().getPluginManager().registerEvents(new ItemDropListener(), this);
+		this.getServer().getPluginManager().registerEvents(new ItemPickupListener(), this);
+		this.getServer().getPluginManager().registerEvents(new PlayerInterectEntityListener(), this);
+		this.getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
+		this.getServer().getPluginManager().registerEvents(new EntityDamageByEntityListener(), this);
+		
+		this.getServer().getPluginManager().registerEvents(new EntityDamageListener(), this);
+		this.getServer().getPluginManager().registerEvents(new FoodLevelChangeListener(), this);
+		this.getServer().getPluginManager().registerEvents(new PlayerItemConsumeListener(), this);
+		this.getServer().getPluginManager().registerEvents(new EntityRegainHealthListener(), this);
+		
+		this.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+		
+		//Quests
+		this.getServer().getPluginManager().registerEvents(new QuestItemListener(), this);
+		
+		for(Player t : Bukkit.getOnlinePlayers()) {
+			if(t.isOp()) {
+				t.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 250));
+				t.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 250));
+				t.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, Integer.MAX_VALUE, 250));
+			}
+		}
+	}
+	
+	@Override
+	public void onDisable() {
+		super.onDisable();
+		
+		session.print("Disabled: " + session.name + " v" + session.version);
+	}
+	
+	public void print(String str) {
+		Bukkit.getServer().getConsoleSender().sendMessage(str);
+	}
+}
