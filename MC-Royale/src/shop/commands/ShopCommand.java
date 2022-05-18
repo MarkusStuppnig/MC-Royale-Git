@@ -1,4 +1,4 @@
-package commands;
+package shop.commands;
 
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -10,12 +10,17 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Villager.Profession;
 
+import main.Session;
+
 public class ShopCommand implements CommandExecutor {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		
-		if(!(sender instanceof Player)) return false;
+		if(!(sender instanceof Player)) {
+			sender.sendMessage(Session.noPlayer);
+			return true;
+		}
         
         Player p = (Player) sender;
         
@@ -33,6 +38,6 @@ public class ShopCommand implements CommandExecutor {
         v.setInvulnerable(true);
         
         
-        return false;
+        return true;
 	}
 }

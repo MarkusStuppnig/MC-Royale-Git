@@ -22,22 +22,23 @@ public class Config {
 	
 	private void saveConfig() {
 		try {
-			if(!file.exists()) {
-				file.createNewFile();
+			if(!this.file.exists()) {
+				this.file.createNewFile();
 			}
 	
-			this.config.save(file);
+			this.config.save(this.file);
+			
 		}catch(IOException e) {}
 	}
 	
-	public Location getLocation(String name) {
+	public Location getLocation(String key) {
 		//Get Values
-		String world = this.config.getString(name + ".world");
-		double x = this.config.getDouble(name + ".x");
-		double y = this.config.getDouble(name + ".y");
-		double z = this.config.getDouble(name + ".z");
-		double yaw = this.config.getDouble(name + ".yaw");
-		double pitch = this.config.getDouble(name + ".pitch");
+		String world = this.config.getString(key + ".world");
+		double x = this.config.getDouble(key + ".x");
+		double y = this.config.getDouble(key + ".y");
+		double z = this.config.getDouble(key + ".z");
+		double yaw = this.config.getDouble(key + ".yaw");
+		double pitch = this.config.getDouble(key + ".pitch");
 		
 		//Make Location
 		Location loc = new Location(Bukkit.getWorld(world), x, y, z);
@@ -46,13 +47,18 @@ public class Config {
 		return loc;
 	}
 	
-	public void saveLocation(String name, Location loc) {
+	public void setLocation(String name, Location loc) {
 		config.set(name + ".x", loc.getX());
 		config.set(name + ".y", loc.getY());
 		config.set(name + ".z", loc.getZ());
 		config.set(name + ".world", loc.getWorld().getName());
 		config.set(name + ".yaw", (double) loc.getYaw());
 		config.set(name + ".pitch", (double) loc.getPitch());
-		saveConfig();
+		this.saveConfig();
+	}
+	
+	public void set(String key, Object obj) {
+		config.set(key, obj);
+		this.saveConfig();
 	}
 }

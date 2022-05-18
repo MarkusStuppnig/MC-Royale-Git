@@ -1,4 +1,4 @@
-package commands;
+package health.commands;
 
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -9,12 +9,17 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import item.Colors;
+import main.Session;
 
 public class HealCommand implements CommandExecutor{
+	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		
-		if(!(sender instanceof Player)) return false;
+		if(!(sender instanceof Player)) {
+			sender.sendMessage(Session.noPlayer);
+			return true;
+		}
 		
 		Player p = (Player) sender;
 		
@@ -26,7 +31,6 @@ public class HealCommand implements CommandExecutor{
 		
 		p.getInventory().addItem(heal);
 		
-		return false;
+		return true;
 	}
 }
-

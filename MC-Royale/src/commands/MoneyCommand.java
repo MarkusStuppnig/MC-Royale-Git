@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import main.Session;
 import shop.stats.ShopStats;
 
 public class MoneyCommand implements CommandExecutor {
@@ -13,7 +14,11 @@ public class MoneyCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String string, String[] args) {
 		
-		if(!(sender instanceof Player)) return false;
+		if(!(sender instanceof Player)) {
+			sender.sendMessage(Session.noPlayer);
+			return true;
+		}
+		
 		Player p = (Player) sender;
 		
 		if(args.length != 1) return false;
@@ -23,6 +28,6 @@ public class MoneyCommand implements CommandExecutor {
 		
 		p.getInventory().addItem(ShopStats.money);
 		
-		return false;
+		return true;
 	}
 }

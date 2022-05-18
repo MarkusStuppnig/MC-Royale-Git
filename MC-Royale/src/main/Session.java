@@ -9,10 +9,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import commands.HealCommand;
 import commands.MoneyCommand;
-import commands.ShopCommand;
+import commands.SetSpawnCommand;
+import commands.StartCommand;
 import config.Config;
+import health.EntityDamageListener;
+import health.EntityRegainHealthListener;
+import health.FoodLevelChangeListener;
+import health.PlayerItemConsumeListener;
+import health.commands.HealCommand;
 import item.Colors;
 import listeners.ArrowListener;
 import listeners.EntityDamageByEntityListener;
@@ -21,23 +26,20 @@ import listeners.ItemDropListener;
 import listeners.ItemPickupListener;
 import listeners.MouseClickListener;
 import listeners.PlayerJoinListener;
-import listeners.health.EntityDamageListener;
-import listeners.health.EntityRegainHealthListener;
-import listeners.health.FoodLevelChangeListener;
-import listeners.health.PlayerItemConsumeListener;
 import quest.QuestItemListener;
-import quest.command.QuestCommand;
+import quest.commands.QuestCommand;
 import shop.InventoryClickListener;
 import shop.PlayerInterectEntityListener;
+import shop.commands.ShopCommand;
 import weapon.Weapon;
-import weapon.command.WeaponCommand;
+import weapon.commands.WeaponCommand;
 
 public class Session extends JavaPlugin {
 
 	private static Session session;
 	
 	public final String name;
-	public final double version;
+	public final String version;
 	
 	public final String defaultWorld;
 	
@@ -45,12 +47,14 @@ public class Session extends JavaPlugin {
 	public static HashMap<String, String> reload_players;
 	public static ArrayList<String> firerate_players;
 	
-	
 	public Config quests;
+	public Config locations;
+	
+	public static final String noPlayer = Colors.red + "You need to be a Player to run this command.";
 	
 	public Session() {
-		this.name = "Plugin";
-		this.version = 0.1;
+		this.name = "MC-Royale";
+		this.version = "0.1.1";
 		
 		this.defaultWorld = "world";
 		
@@ -60,6 +64,7 @@ public class Session extends JavaPlugin {
 		
 		
 		this.quests = new Config("config/quests.yaml");
+		this.locations = new Config("config/locations.yaml");
 	}
 	
 	public static Session getSession() {
@@ -78,6 +83,9 @@ public class Session extends JavaPlugin {
 		this.getCommand("quests").setExecutor(new QuestCommand());
 		this.getCommand("heal").setExecutor(new HealCommand());
 		this.getCommand("money").setExecutor(new MoneyCommand());
+		
+		this.getCommand("setspawn").setExecutor(new SetSpawnCommand());
+		this.getCommand("start").setExecutor(new StartCommand());
 		
 		this.getServer().getPluginManager().registerEvents(new MouseClickListener(), this);
 		this.getServer().getPluginManager().registerEvents(new ArrowListener(), this);

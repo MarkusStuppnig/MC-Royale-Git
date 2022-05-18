@@ -1,12 +1,52 @@
-name: Plugin
-author: Markus
+#Attributes
+name: MC-Royale
+version: 0.1.1
+description: "A simple spigot plugin for battle royale in minecraft."
+
+#Author
+author: mstuppnig@student.tgm.ac.at - Marknauzly#9129
+
+#Configuration
 main: main.Session
-version: 0.1
-description: My Plugin
+api-version: 1.15
+load: POSTWORLD
+prefix: "MC-Royale - Battle Royale"
 
 commands:
   weapon:
+    description: "§8This command gives you a weapon."
+    usage: "Usage /<command> [ ak47 | pump | sniper]"
+    permission: bukkit.command.op
+    permission-message: "§8Only operators are allowed to use this command."
+
   shop:
+    description: "§8This command summons a shopkeeper."
+    usage: "Usage /<command>"
+    permission: bukkit.command.op
+    permission-message: "§8Only operators are allowed to use this command."
+
   quests:
+    description: "§8This command opens your quest menu."
+    usage: "Usage /<command>"
+
   heal:
+    description: "§8This command gives you a heal item."
+    usage: "Usage /<command>"
+
   money:
+    description: "§8This command gives you money."
+    usage: "Usage /<command> <amount>"
+    permission: bukkit.command.op
+    permission-message: "§8Only operators are allowed to use this command."
+
+  setspawn:
+    description: "§8This command sets the start point."
+    usage: "Usage /<command>"
+    permission: bukkit.command.op
+    permission-message: "§8Only operators are allowed to use this command."
+
+  start:
+    description: "§8This command starts a game."
+    usage: "Usage /<command>"
+    permission: bukkit.command.op
+    permission-message: "§8Only operators are allowed to use this command."

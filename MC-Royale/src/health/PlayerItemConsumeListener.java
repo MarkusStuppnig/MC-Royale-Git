@@ -1,4 +1,4 @@
-package listeners.health;
+package health;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
