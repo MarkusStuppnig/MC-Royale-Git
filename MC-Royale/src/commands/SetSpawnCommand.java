@@ -18,7 +18,7 @@ public class SetSpawnCommand implements CommandExecutor {
 			return true;
 		}
 		
-		if(args.length == 0) return false;
+		if(args.length != 0) return false;
 		
 		Player p = (Player) sender;
 		Session.getSession().locations.setLocation("start_location", p.getLocation());
