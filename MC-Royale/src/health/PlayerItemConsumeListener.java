@@ -18,6 +18,6 @@ public class PlayerItemConsumeListener implements Listener{
 			p.setFoodLevel(p.getFoodLevel() + 1);
 			p.getInventory().removeItem(e.getItem());
 		}
-		e.setCancelled(true);
+		e.setCancelled(true);//test
 	}
 }
