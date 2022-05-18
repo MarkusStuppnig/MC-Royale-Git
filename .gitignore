@@ -5,6 +5,7 @@ bin/
 .metadata/
 .settings/
 .codetogether.ignore
+.vscode/
 
 #Class Files
 *.class
