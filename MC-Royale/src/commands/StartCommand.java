@@ -20,16 +20,16 @@ public class StartCommand implements CommandExecutor {
 			return true;
 		}
 		
-		if(args.length == 0) return false;
+		if(args.length != 0) return false;
 		
 		Player p = (Player) sender;
 		Location loc = Session.getSession().locations.getLocation("start_location");
 		
 		for(Player t : Bukkit.getOnlinePlayers()) {
 			t.teleport(loc);
-			t.sendMessage(Colors.blue + "Player " + Colors.dark_aqua + p.getName() + Colors.black + " started a game.");
-			t.sendMessage(Colors.blue + "You were teleported to start location.");
-			t.sendMessage(Colors.blue + "You have 1 minute spawn protection...");
+			t.sendMessage(Colors.aqua + "Player " + Colors.dark_aqua + p.getName() + Colors.aqua + " started a game.");
+			t.sendMessage(Colors.aqua + "You were teleported to start location.");
+			t.sendMessage(Colors.aqua + "You have 1 minute spawn protection...");
 		}
 		
 		return true;
