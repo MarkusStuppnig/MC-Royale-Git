@@ -22,7 +22,7 @@ public class EntityDamageListener implements Listener{
 			toRemove -= p.getHealth();	
 			p.setHealth(1);
 
-			e.setCancelled(true);
+			e.setDamage(0);
 			
 			p.setFoodLevel(p.getFoodLevel() - toRemove);
 			
