@@ -4,6 +4,7 @@ bin/
 #System specific Files
 .metadata/
 .settings/
+.codetogether.ignore
 
 #Class Files
 *.class
