@@ -29,9 +29,15 @@ commands:
     description: "§8This command opens your quest menu."
     usage: "Usage /<command>"
 
-  heal:
+  health:
     description: "§8This command gives you a heal item."
     usage: "Usage /<command>"
+
+  heal:
+    description: "§8This command heals you."
+    usage: "Usage /<command>"
+    permission: bukkit.command.op
+    permission-message: "§8Only operators are allowed to use this command."
 
   money:
     description: "§8This command gives you money."

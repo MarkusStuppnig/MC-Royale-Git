@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import commands.HealCommand;
 import commands.MoneyCommand;
 import commands.SetSpawnCommand;
 import commands.StartCommand;
@@ -17,7 +18,7 @@ import health.EntityDamageListener;
 import health.EntityRegainHealthListener;
 import health.FoodLevelChangeListener;
 import health.PlayerItemConsumeListener;
-import health.commands.HealCommand;
+import health.commands.HealthCommand;
 import item.Colors;
 import listeners.ArrowListener;
 import listeners.EntityDamageByEntityListener;
@@ -81,6 +82,7 @@ public class Session extends JavaPlugin {
 		this.getCommand("weapon").setExecutor(new WeaponCommand());
 		this.getCommand("shop").setExecutor(new ShopCommand());
 		this.getCommand("quests").setExecutor(new QuestCommand());
+		this.getCommand("health").setExecutor(new HealthCommand());
 		this.getCommand("heal").setExecutor(new HealCommand());
 		this.getCommand("money").setExecutor(new MoneyCommand());
 		
