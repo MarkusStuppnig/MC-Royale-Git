@@ -16,7 +16,6 @@ public class PlayerItemConsumeListener implements Listener{
 		
 		if(e.getItem().getItemMeta().getDisplayName().equals(Colors.green + Colors.bold + "Heal")) {
 			p.setFoodLevel(p.getFoodLevel() + 1);
-			p.sendMessage("healed");
 			p.getInventory().removeItem(e.getItem());
 		}
 		e.setCancelled(true);
