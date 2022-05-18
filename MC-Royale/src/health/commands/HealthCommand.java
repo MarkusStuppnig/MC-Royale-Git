@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import item.Colors;
 import main.Session;
 
-public class HealCommand implements CommandExecutor{
+public class HealthCommand implements CommandExecutor{
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
