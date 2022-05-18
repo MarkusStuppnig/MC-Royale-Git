@@ -23,6 +23,7 @@ public class SetSpawnCommand implements CommandExecutor {
 		Player p = (Player) sender;
 		Session.getSession().locations.setLocation("start_location", p.getLocation());
 		
+		//Command
 		p.sendMessage(Colors.blue + "Successfully set start location to:");
 		p.sendMessage(Colors.dark_aqua + "X: " + p.getLocation().getX());
 		p.sendMessage(Colors.dark_aqua + "Y: " + p.getLocation().getY());
