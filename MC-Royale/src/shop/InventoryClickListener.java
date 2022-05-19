@@ -61,5 +61,13 @@ public class InventoryClickListener implements Listener{
 			p.getInventory().addItem(WeaponStats.sniper());
 			p.sendMessage(Colors.aqua + "You bought a sniper for " + Colors.yellow + Colors.bold + "60$!");
 		}
+		
+		//Heal
+		if(stack.getItemMeta().getDisplayName().equals(ShopStats.heal.getItemMeta().getDisplayName())) {
+			money.setAmount(10);
+			if(!(item.Inventory.remove(money, p))) return;
+			p.getInventory().addItem(ShopStats.heal);
+			p.sendMessage(Colors.aqua + "You bought heal for " + Colors.yellow + Colors.bold + "10$!");
+		}
 	}
 }
