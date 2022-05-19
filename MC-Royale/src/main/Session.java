@@ -22,6 +22,7 @@ import health.commands.HealthCommand;
 import item.Colors;
 import listeners.ArrowListener;
 import listeners.EntityDamageByEntityListener;
+import listeners.EntityDeathListener;
 import listeners.HotbarSwitchListener;
 import listeners.ItemDropListener;
 import listeners.ItemPickupListener;
@@ -98,6 +99,7 @@ public class Session extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new PlayerInterectEntityListener(), this);
 		this.getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
 		this.getServer().getPluginManager().registerEvents(new EntityDamageByEntityListener(), this);
+		this.getServer().getPluginManager().registerEvents(new EntityDeathListener(), this);
 		
 		this.getServer().getPluginManager().registerEvents(new EntityDamageListener(), this);
 		this.getServer().getPluginManager().registerEvents(new FoodLevelChangeListener(), this);

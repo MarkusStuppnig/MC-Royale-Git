@@ -1,6 +1,7 @@
 package health;
 
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -10,11 +11,10 @@ public class EntityDamageListener implements Listener{
 	@EventHandler
 	public void onEntityDamage(EntityDamageEvent e) {
 		
+		if(e.getEntity() instanceof Villager) e.setCancelled(true);
 		if(!(e.getEntity() instanceof Player)) return;
 		
 		Player p = (Player) e.getEntity();
-		
-		p.sendMessage("" + p.getHealth());
 		
 		if(p.getHealth() - e.getDamage() <= 1) {
 
