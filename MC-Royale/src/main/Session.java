@@ -48,6 +48,7 @@ public class Session extends JavaPlugin {
 	public static HashMap<String, String> reload_players;
 	public static ArrayList<String> firerate_players;
 	
+	public Config gameStats;
 	public Config quests;
 	public Config locations;
 	
@@ -63,7 +64,7 @@ public class Session extends JavaPlugin {
 		reload_players = new HashMap<String, String>();
 		firerate_players = new ArrayList<String>();
 		
-		
+		this.gameStats = new Config("config/gameStats.yaml");
 		this.quests = new Config("config/quests.yaml");
 		this.locations = new Config("config/locations.yaml");
 	}

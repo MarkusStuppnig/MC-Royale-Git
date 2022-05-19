@@ -1,6 +1,6 @@
 package item;
 
-public class Colors {
+public interface Colors {
 
 	public static final String dark_red = "§4";
 	public static final String red = "§c";

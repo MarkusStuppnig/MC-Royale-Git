@@ -21,7 +21,4 @@ public class HealCommand implements CommandExecutor{
 			return false;
 		}
 	}
-	
-	
-	
 }
