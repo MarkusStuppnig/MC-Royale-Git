@@ -44,6 +44,6 @@ public class Game {
 		}
 		
 		Bukkit.broadcastMessage(Colors.gold + "Thank you for playing.");
-		Bukkit.broadcastMessage(System.getProperty("os.name"));
+		//Bukkit.broadcastMessage(System.getProperty("os.name"));
 	}
 }
