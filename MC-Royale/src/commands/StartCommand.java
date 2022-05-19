@@ -18,7 +18,10 @@ public class StartCommand implements CommandExecutor {
 			return true;
 		}
 		
-		if(args.length != 0) return false;
+		if(args.length != 0) {
+			Game.stopGame(sender.getName());
+			return true;
+		}
 		
 		Game.startGame(sender.getName());
 		
