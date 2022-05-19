@@ -1,13 +1,11 @@
 package commands;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import item.Colors;
+import game.Game;
 import main.Session;
 
 public class StartCommand implements CommandExecutor {
@@ -22,15 +20,7 @@ public class StartCommand implements CommandExecutor {
 		
 		if(args.length != 0) return false;
 		
-		Player p = (Player) sender;
-		Location loc = Session.getSession().locations.getLocation("start_location");
-		
-		for(Player t : Bukkit.getOnlinePlayers()) {
-			t.teleport(loc);
-			t.sendMessage(Colors.aqua + "Player " + Colors.dark_aqua + p.getName() + Colors.aqua + " started a game.");
-			t.sendMessage(Colors.aqua + "You were teleported to start location.");
-			t.sendMessage(Colors.aqua + "You have 1 minute spawn protection...");
-		}
+		Game.startGame(sender.getName());
 		
 		return true;
 	}
