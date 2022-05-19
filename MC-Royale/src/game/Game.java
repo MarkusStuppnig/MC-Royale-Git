@@ -1,5 +1,7 @@
 package game;
 
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -27,13 +29,21 @@ public class Game {
 		Bukkit.broadcastMessage(Colors.aqua + "You have 1 minute spawn protection...");
 	}
 	
-	public static void stopGame(Player p) {
+	public static void stopGame(String name) {
 		
-		Bukkit.broadcastMessage(Colors.aqua + "Player " + p.getName() + " won the game.");
+		Bukkit.broadcastMessage(Colors.aqua + "Player " + Colors.light_purple + name + Colors.aqua + " won the game.");
 		
-		String uuid = (String) Session.getSession().gameStats.config.get("longestShot.uuid");
-		int distance = (int) Session.getSession().gameStats.config.get("longestShot.distance");
+		if(Session.getSession().gameStats.config != null) {
+			String uuid = (String) Session.getSession().gameStats.config.get("longestShot.uuid");
+			
+			if(uuid != null) {
+				double distance = (double) Session.getSession().gameStats.config.get("longestShot.distance");
+				Bukkit.broadcastMessage(Colors.aqua + "Longest shot: " + Colors.light_purple + Bukkit.getPlayer(UUID.fromString(uuid)).getName() + Colors.aqua + " - Distance " + Colors.light_purple + distance);
+				Session.getSession().gameStats.deleteFile(true);
+			}
+		}
 		
-		Bukkit.broadcastMessage(Colors.aqua + "Logest shot: " + Colors.dark_aqua + Bukkit.getPlayer(uuid) + Colors.aqua + " - Distance " + Colors.dark_aqua + distance);
+		Bukkit.broadcastMessage(Colors.gold + "Thank you for playing.");
+		Bukkit.broadcastMessage(System.getProperty("os.name"));
 	}
 }

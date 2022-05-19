@@ -120,7 +120,7 @@ public class Weapon extends ItemStack {
 			//Spawn Arrow
 			Arrow arrow = Bukkit.getWorld(Session.getSession().defaultWorld).spawnArrow(p.getEyeLocation(), p.getEyeLocation().getDirection(), this.bullet_speed, this.bullet_spread);
 			arrow.setShooter(p);
-			arrow.setCustomName("arrow:" + this.getId());
+			arrow.setCustomName("arrow:" + this.getId() + ";" + p.getLocation().getX() + ";" + p.getLocation().getY() + ";" + p.getLocation().getZ() + ";" + p.getUniqueId());
 			arrow.setCustomNameVisible(false);
 		}
 		

@@ -31,6 +31,13 @@ public class Config {
 		}catch(IOException e) {}
 	}
 	
+	public void deleteFile(boolean delete) {
+		if(!delete) return;
+		
+		this.config = null;
+		this.file.delete();
+	}
+	
 	public Location getLocation(String key) {
 		//Get Values
 		String world = this.config.getString(key + ".world");
