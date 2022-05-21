@@ -18,34 +18,34 @@ public class EntityDamageByEntityListener implements Listener {
 		
 		if(!(e.getDamager() instanceof Arrow)) return;
 		if(e.getDamager().getCustomName() == null) return;
-		
+
 		Arrow arrow = (Arrow) e.getDamager();
+		String[] arrowData = arrow.getCustomName().split(";");
 		
-		String id = arrow.getCustomName().substring(arrow.getCustomName().indexOf(":") + 1);
-		
+		if(!arrowData[0].equals("gunArrow")) return;
+
+
 		for(Weapon w : Session.weapons) {
-			if(w.getId().equals(id)) {
+			if(w.getId().equals(arrowData[1])) {
 				e.setDamage(w.damage);
 				break;
 			}
 		}
 		
-		String[] arrowData = arrow.getCustomName().split(";");
-		
 		World world = Bukkit.getServer().getWorld(Session.getSession().defaultWorld);
-		double x = Double.parseDouble(arrowData[1]);
-		double y = Double.parseDouble(arrowData[2]);
-		double z = Double.parseDouble(arrowData[3]);
+		double x = Double.parseDouble(arrowData[2]);
+		double y = Double.parseDouble(arrowData[3]);
+		double z = Double.parseDouble(arrowData[4]);
 		Location location = new Location(world, x, y, z);
 		
 		double distance = e.getEntity().getLocation().distance(location);
 		
 		if(!Session.getSession().gameStats.config.contains("longestShot.distance")) {
-			Session.getSession().gameStats.config.set("longestShot.uuid", arrowData[4]);
+			Session.getSession().gameStats.config.set("longestShot.uuid", arrowData[1]);
 			Session.getSession().gameStats.config.set("longestShot.distance", distance);
 		}
 		else if(distance > (double) Session.getSession().gameStats.config.get("longestShot.distance")) {
-			Session.getSession().gameStats.config.set("longestShot.uuid", arrowData[4]);
+			Session.getSession().gameStats.config.set("longestShot.uuid", arrowData[1]);
 			Session.getSession().gameStats.config.set("longestShot.distance", distance);
 		}
 	}
