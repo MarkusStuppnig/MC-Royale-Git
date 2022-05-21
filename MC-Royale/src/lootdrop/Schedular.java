@@ -20,8 +20,8 @@ public class Schedular implements Listener {
     @SuppressWarnings("deprecation")
 	@EventHandler
     public void onFallBlock(EntityChangeBlockEvent e) {
-	    
-	    if(!(e.getEntity() instanceof FallingBlock)) return;
+    	
+    	if(!(e.getEntity() instanceof FallingBlock)) return;
 	    if(e.getTo() != Material.SAND) return;
 	    
 	    Block block_sand = e.getBlock();
@@ -37,6 +37,12 @@ public class Schedular implements Listener {
         		t.playSound(block_sand.getLocation(), Sound.BLOCK_BEACON_ACTIVATE, 5F, 10F);
         	}
         }
+        
+        e.getEntity().remove();
+        e.getEntity().eject();
+        e.setCancelled(true);
+        
+        new Location(world, x, y, z).getBlock().setType(Material.BEACON);
         
         new Location(world, x, y + 2, z).getBlock().setType(Material.WHITE_STAINED_GLASS);
         
@@ -100,6 +106,5 @@ public class Schedular implements Listener {
         block.setBlockData(Bukkit.getUnsafe().fromLegacy(block.getType(), (byte) 9), true);
         
         Bukkit.broadcastMessage(Colors.green + "A Lootdrop summonned");
-        e.getBlock().setType(Material.BEACON);
     }
 }

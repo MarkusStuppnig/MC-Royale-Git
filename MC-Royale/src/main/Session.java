@@ -2,6 +2,7 @@ package main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -30,6 +31,7 @@ import listeners.MouseClickListener;
 import listeners.PlayerJoinListener;
 import lootdrop.LootDropCommand;
 import lootdrop.Schedular;
+import lootdrop.Wind;
 import quest.QuestItemListener;
 import quest.commands.QuestCommand;
 import shop.InventoryClickListener;
@@ -55,6 +57,10 @@ public class Session extends JavaPlugin {
 	public Config quests;
 	public Config locations;
 	
+	public Random random;
+	
+	public Wind wind;
+	
 	public static final String noPlayer = Colors.red + "You need to be a Player to run this command.";
 	
 	public Session() {
@@ -70,6 +76,8 @@ public class Session extends JavaPlugin {
 		this.gameStats = new Config("./config/gameStats.yaml");
 		this.quests = new Config("./config/quests.yaml");
 		this.locations = new Config("./config/locations.yaml");
+		
+		this.random = new Random();
 	}
 	
 	public static Session getSession() {
@@ -82,6 +90,9 @@ public class Session extends JavaPlugin {
 		
 		session = this;
 		session.print(Colors.green + "Enabled: " + session.name + " v" + session.version);
+		
+		this.wind = new Wind();
+		this.wind.runTaskTimer(Session.getSession(), 0, 5);
 		
 		this.getCommand("weapon").setExecutor(new WeaponCommand());
 		this.getCommand("shop").setExecutor(new ShopCommand());
