@@ -37,8 +37,8 @@ public class Game {
 			String uuid = (String) Session.getSession().gameStats.config.get("longestShot.uuid");
 			
 			if(uuid != null) {
-				double distance = (double) Session.getSession().gameStats.config.get("longestShot.distance");
-				Bukkit.broadcastMessage(Colors.aqua + "Longest shot: " + Colors.light_purple + Bukkit.getPlayer(UUID.fromString(uuid)).getName() + Colors.aqua + " - Distance " + Colors.light_purple + distance);
+				double distance = Math.round((double) Session.getSession().gameStats.config.get("longestShot.distance") * 100) / 100d;
+				Bukkit.broadcastMessage(Colors.aqua + "Longest shot: " + Colors.light_purple + Bukkit.getPlayer(UUID.fromString(uuid)).getName() + Colors.aqua + " - Distance " + Colors.light_purple + distance + "m");
 				Session.getSession().gameStats.deleteFile(true);
 			}
 		}
