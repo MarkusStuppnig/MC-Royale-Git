@@ -24,8 +24,8 @@ public class ShopCommand implements CommandExecutor {
         
         Player p = (Player) sender;
         
-        Location l = new Location(p.getWorld(), p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), p.getLocation().getYaw(),  1);
-        Villager v = (Villager) p.getWorld().spawnEntity(l, EntityType.VILLAGER);
+        Location loc = new Location(p.getWorld(), p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), p.getLocation().getYaw(),  1);
+        Villager v = (Villager) p.getWorld().spawnEntity(loc, EntityType.VILLAGER);
         
         LivingEntity le = (LivingEntity) v;
         
@@ -36,7 +36,6 @@ public class ShopCommand implements CommandExecutor {
         v.setSilent(true);
         le.setInvulnerable(true);
         v.setInvulnerable(true);
-        
         
         return true;
 	}
