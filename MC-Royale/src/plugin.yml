@@ -56,3 +56,9 @@ commands:
     usage: "Usage /<command>"
     permission: bukkit.command.op
     permission-message: "§8Only operators are allowed to use this command."
+    
+  lootdrop:
+    description: "§8This command makes a lootdrop."
+    usage: "Usage /<command>"
+    permission: bukkit.command.op
+    permission-message: "§8Only operators are allowed to use this command."

@@ -28,6 +28,8 @@ import listeners.ItemDropListener;
 import listeners.ItemPickupListener;
 import listeners.MouseClickListener;
 import listeners.PlayerJoinListener;
+import lootdrop.LootDropCommand;
+import lootdrop.Schedular;
 import quest.QuestItemListener;
 import quest.commands.QuestCommand;
 import shop.InventoryClickListener;
@@ -90,6 +92,7 @@ public class Session extends JavaPlugin {
 		
 		this.getCommand("setspawn").setExecutor(new SetSpawnCommand());
 		this.getCommand("start").setExecutor(new StartCommand());
+		this.getCommand("lootdrop").setExecutor(new LootDropCommand());
 		
 		this.getServer().getPluginManager().registerEvents(new MouseClickListener(), this);
 		this.getServer().getPluginManager().registerEvents(new ArrowListener(), this);
@@ -107,6 +110,9 @@ public class Session extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new EntityRegainHealthListener(), this);
 		
 		this.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+		
+		//Lootdrop
+		this.getServer().getPluginManager().registerEvents(new Schedular(), this);
 		
 		//Quests
 		this.getServer().getPluginManager().registerEvents(new QuestItemListener(), this);
