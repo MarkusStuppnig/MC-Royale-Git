@@ -4,6 +4,8 @@ bin/
 #System specific Files
 .metadata/
 .settings/
+MC-Royale/.project
+MC-Royale/.classpath
 .codetogether.ignore
 .vscode/
 
