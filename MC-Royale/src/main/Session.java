@@ -10,35 +10,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import commands.HealCommand;
-import commands.MoneyCommand;
-import commands.SetSpawnCommand;
-import commands.StartCommand;
 import config.Config;
-import health.EntityDamageListener;
-import health.EntityRegainHealthListener;
-import health.FoodLevelChangeListener;
-import health.PlayerItemConsumeListener;
-import health.commands.HealthCommand;
+
+import listeners.*;
+import commands.*;
+
 import item.Colors;
-import listeners.ArrowListener;
-import listeners.EntityDamageByEntityListener;
-import listeners.EntityDeathListener;
-import listeners.HotbarSwitchListener;
-import listeners.ItemDropListener;
-import listeners.ItemPickupListener;
-import listeners.MouseClickListener;
-import listeners.PlayerJoinListener;
-import lootdrop.LootDropCommand;
-import lootdrop.Schedular;
-import lootdrop.Wind;
-import quest.QuestItemListener;
-import quest.commands.QuestCommand;
-import shop.InventoryClickListener;
-import shop.PlayerInterectEntityListener;
-import shop.commands.ShopCommand;
-import weapon.Weapon;
-import weapon.commands.WeaponCommand;
+
+import health.*;
+import health.commands.*;
+import lootdrop.*;
+import quest.*;
+import quest.commands.*;
+import shop.*;
+import shop.commands.*;
+import weapon.*;
+import weapon.commands.*;
 
 public class Session extends JavaPlugin {
 
@@ -114,6 +101,7 @@ public class Session extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
 		this.getServer().getPluginManager().registerEvents(new EntityDamageByEntityListener(), this);
 		this.getServer().getPluginManager().registerEvents(new EntityDeathListener(), this);
+		this.getServer().getPluginManager().registerEvents(new EntityTransformListener(), this);
 		
 		this.getServer().getPluginManager().registerEvents(new EntityDamageListener(), this);
 		this.getServer().getPluginManager().registerEvents(new FoodLevelChangeListener(), this);
