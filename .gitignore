@@ -9,6 +9,9 @@ MC-Royale/.classpath
 .codetogether.ignore
 .vscode/
 
+
+#jar Files
+*.jar
 #Class Files
 *.class
 
