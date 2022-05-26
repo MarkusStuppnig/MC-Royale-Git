@@ -1,6 +1,5 @@
 package listeners;
 
-import org.bukkit.entity.Villager;
 import org.bukkit.entity.Witch;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
